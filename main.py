@@ -17,6 +17,21 @@ timer_text=turtle.Turtle()
 timer_text.hideturtle()  # Hide the turtle icon
 timer_text.penup()       # Stop drawing the turtle trail
 
+score=0
+score_text=turtle.Turtle()
+score_text.hideturtle()
+score_text.penup()
+score_text.goto(0,300)
+
+def increase_score(x,y):
+    global score
+    score+=1
+    score_text.clear()
+    score_text.write(f"Score: {score}",align="center",font=("Courier", 30, "normal"))
+
+game_screen.onscreenclick(increase_score)
+
+
 start=time.time()
 previous_time=-1 #önceki zamanı tutan değişken
 
@@ -35,7 +50,8 @@ while (time.time()-start)<16:
     game_screen.update()
     #time.sleep(0.100)  # Kaplumbağanın hızını yavaşlatmak için bekleme süresi
 
-
+score_text.goto(0, 0)  # Sonucu ortala
+score_text.write(f"Times is done\n Score: {score}", align="center", font=("Courier", 30, "normal"))
 
 
 
