@@ -12,6 +12,7 @@ game_screen.tracer(0)
 ken=turtle.Turtle()
 ken.shape("turtle")
 ken.color("dark green")
+ken.shapesize(2,2)
 
 timer_text=turtle.Turtle()
 timer_text.hideturtle()  # Hide the turtle icon
@@ -25,9 +26,10 @@ score_text.goto(0,300)
 
 def increase_score(x,y):
     global score
-    score+=1
-    score_text.clear()
-    score_text.write(f"Score: {score}",align="center",font=("Courier", 30, "normal"))
+    if ken.distance(x,y)<20: #kaplumbağa mesafe kontrolü
+        score+=1
+        score_text.clear()
+        score_text.write(f"Score: {score}",align="center",font=("Courier", 30, "normal"))
 
 game_screen.onscreenclick(increase_score)
 
