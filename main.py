@@ -55,7 +55,8 @@ while int(time.time()-start)<16:
         game_screen.onscreenclick(increase_score) #Ekrana tıkladıkça score'umuzu arttıran kod bloğu.
 
     game_screen.update() #ekranı sürekli güncel tutmamızı sağlayan kod bloğu.
-
+ken.hideturtle()
+game_screen.update()
 game_over = True
 score_text.goto(0, 0)
 score_text.write(f"Times is finished\n Score: {score}", align="center", font=("Courier", 30, "normal"))
