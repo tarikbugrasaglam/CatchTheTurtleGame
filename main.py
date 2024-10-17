@@ -7,7 +7,7 @@ game_screen=turtle.Screen()
 game_screen.bgcolor("white")
 game_screen.title("Catch The Turtle!")
 
-game_screen.tracer(0)
+game_screen.tracer(0)  #Oyun akıcılığını optimize etmek adına yapılan kod.
 
 #ekrandaki turtle'ın kodları
 ken=turtle.Turtle()
@@ -31,7 +31,7 @@ game_over=False #oyun bittiğinde daha fazla tıkladığımızda puan almamak i�
 
 #score'u kontrol eden fonksiyon
 def increase_score(x,y):
-    global score
+    global score  #Fonksiyon içinde yerel değişken olmasın diye global terimini kullandık.
     if not game_over and ken.distance(x, y) < 20:
         score+=1
         score_text.clear()
@@ -50,12 +50,11 @@ while int(time.time()-start)<16:
         timer_text.goto(-70,350)
         ken.penup()
         ken.goto((randint(-200,200), randint(-200,200)))  # pozisyonu ayarlama
-        ken.pendown()
-        timer_text.write(f"Time={current_time}", font=("Courier", 30, "normal"))
+        timer_text.write(f"Time={15-current_time}", font=("Courier", 30, "normal")) #Zaman kontrolü yapan kod.
         previous_time = current_time
-        game_screen.onscreenclick(increase_score)
+        game_screen.onscreenclick(increase_score) #Ekrana tıkladıkça score'umuzu arttıran kod bloğu.
 
-    game_screen.update()
+    game_screen.update() #ekranı sürekli güncel tutmamızı sağlayan kod bloğu.
 
 game_over = True
 score_text.goto(0, 0)
